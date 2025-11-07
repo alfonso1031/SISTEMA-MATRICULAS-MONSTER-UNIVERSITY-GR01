@@ -203,14 +203,18 @@ public class MonsterUniversityApp {
         System.out.print("Enter course name: ");
         String courseName = scanner.nextLine().trim();
         System.out.print("Enter credits: ");
-        int credits = Integer.parseInt(scanner.nextLine().trim());
+        String creditsStr = scanner.nextLine().trim();
         System.out.print("Enter capacity: ");
-        int capacity = Integer.parseInt(scanner.nextLine().trim());
+        String capacityStr = scanner.nextLine().trim();
         
         try {
+            int credits = Integer.parseInt(creditsStr);
+            int capacity = Integer.parseInt(capacityStr);
             Course course = new Course(courseCode, courseName, credits, capacity);
             enrollmentService.addCourse(course);
             System.out.println("SUCCESS: Course added successfully");
+        } catch (NumberFormatException e) {
+            System.out.println("ERROR: Credits and capacity must be valid numbers");
         } catch (IllegalArgumentException e) {
             System.out.println("ERROR: " + e.getMessage());
         }

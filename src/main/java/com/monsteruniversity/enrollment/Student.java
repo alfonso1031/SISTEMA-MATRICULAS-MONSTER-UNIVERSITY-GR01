@@ -65,6 +65,7 @@ public class Student {
     
     public int getTotalCredits() {
         return enrollments.stream()
+            .filter(e -> e.getStatus() == Enrollment.EnrollmentStatus.ACTIVE)
             .mapToInt(e -> e.getCourse().getCredits())
             .sum();
     }

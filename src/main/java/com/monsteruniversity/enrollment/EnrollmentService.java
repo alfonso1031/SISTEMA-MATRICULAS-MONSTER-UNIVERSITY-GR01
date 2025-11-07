@@ -111,6 +111,7 @@ public class EnrollmentService {
         
         enrollmentToRemove.setStatus(Enrollment.EnrollmentStatus.DROPPED);
         course.removeEnrollment(enrollmentToRemove);
+        // Note: Enrollment remains in student's list with DROPPED status for history tracking
     }
     
     public Map<String, Student> getAllStudents() {
